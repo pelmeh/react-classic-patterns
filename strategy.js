@@ -1,33 +1,18 @@
 
-class Proto extends Component {
-  constructor (props) {
-    super(props)
-    this.chosen = {
-      first: FirstStrategy,
-      second: SecondStrategy,
-      third: ThirdStrategy
-    }[props.chosenStrategy]
-  }
-  
+class Strategy extends Component {
   // Some methods
   ...
   
   render () {
-    const Chosen = this.chosen
+    const Chosen = this.props.chosen
     return (
-      <Chosen
-        {...this.props}
-        context={this}
-      />
+      <Chosen {...this.props} />
     )
   }
 }
 
-
-
 class FirstStrategy extends Component {
   render () {
-    // can access to parent's methods (from - this.props.context), but you should be carefully
     ...
   }
 }
@@ -43,3 +28,7 @@ class ThirdStrategy extends Component {
     ...
   }
 }
+
+// USING
+  
+<Strategy chosen={FirstStrategy} />
